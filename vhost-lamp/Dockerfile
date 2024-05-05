@@ -5,7 +5,7 @@
 FROM php:8.1-apache
 MAINTAINER Györk Bakonyi <gyork@bakonyi.info>
 
-ENV DOCKER_PATH vhost-lamp
+ENV DOCKER_PATH ./vhost-lamp
 
 RUN apt-get update && apt-get install -y \
     libpng-dev \
