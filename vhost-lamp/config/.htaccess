@@ -1,0 +1,16 @@
+RewriteEngine on
+
+# Exception for info.php
+RewriteCond %{REQUEST_URI} ^/info\.php$
+RewriteRule ^ - [L]
+
+# Redirect to the Laravel public directory
+RewriteCond %{REQUEST_URI} !^/my-laravel/public/
+RewriteCond %{DOCUMENT_ROOT}/my-laravel/public%{REQUEST_URI} -f [OR]
+RewriteCond %{DOCUMENT_ROOT}/my-laravel/public%{REQUEST_URI} -d
+RewriteRule ^(.*)$ /my-laravel/public/$1 [L,QSA]
+
+# Handle Laravel front controller
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /my-laravel/public/index.php?$1 [L,QSA]
