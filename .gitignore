@@ -138,4 +138,8 @@ fabric.properties
 
 ## workflow tester
 .bin/
+.bin/*
 bin/
+bin/*
+bin/act
+
