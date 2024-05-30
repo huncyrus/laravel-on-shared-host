@@ -26,13 +26,18 @@ RUN a2enmod rewrite
 
 # Copy Laravel application from /src directory
 RUN mkdir /var/www/html/my-laravel
-COPY ${DOCKER_PATH}/src /var/www/html/my-laravel
-COPY ${DOCKER_PATH}/config/.htaccess /var/www/html
-COPY ${DOCKER_PATH}/config/info.php /var/www/html
+#COPY ${DOCKER_PATH}/src /var/www/html/my-laravel
+#COPY ${DOCKER_PATH}/config/.htaccess /var/www/html
+#COPY ${DOCKER_PATH}/config/info.php /var/www/html
+
+COPY ./src /var/www/html/my-laravel
+COPY ./config/.htaccess /var/www/html
+COPY ./config/info.php /var/www/html
 
 
 # owerwrite the default env file
-COPY ${DOCKER_PATH}/config/.env /var/www/html/my-laravel/.env
+#COPY ${DOCKER_PATH}/config/.env /var/www/html/my-laravel/.env
+COPY ./config/.env /var/www/html/my-laravel/.env
 
 # Set working directory
 WORKDIR /var/www/html/my-laravel
